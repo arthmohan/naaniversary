@@ -338,7 +338,7 @@ html, body {
   left: 0;
   right: 0;
   height: 15vh;
-  background: url('../assets/books.png') no-repeat bottom center;
+  background: url('../assets/books.webp') no-repeat bottom center;
   background-size: 100% auto;
   pointer-events: none;
   user-select: none;
