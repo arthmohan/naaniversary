@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>naaniversary</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Lock Screen (countdown + password gate) -->
+  <div id="lock-screen" class="screen">
+
+    <!-- Countdown (before Oct 11) -->
+    <div class="lock-content" id="countdown-content">
+      <p class="lock-heading">IT&rsquo;S NOT ANNIVERSARY YET</p>
+      <p class="lock-subheading">PATIENCE JAAN</p>
+      <p class="countdown" id="countdown">00:00:00</p>
+      <div class="suggestion-area">
+        <p class="suggestion-label">while you wait, you could...</p>
+        <p class="suggestion-text" id="suggestion">&nbsp;</p>
+      </div>
+    </div>
+
+    <!-- Password gate (after countdown) -->
+    <div class="lock-content" id="password-content" style="display: none;">
+      <p class="lock-heading">IT&rsquo;S ANNIVERSARY!!!</p>
+      <div class="password-box">
+        <input type="text" id="password-input" class="password-input" placeholder="enter password" autocomplete="off" autocapitalize="none" autocorrect="off" spellcheck="false">
+        <p class="password-hint">hint: what would a nidhi and arth anniversary be called?</p>
+        <button id="password-submit" class="nav-btn password-btn">enter</button>
+      </div>
+    </div>
+
+    <div class="hedge-container">
+      <img src="assets/hedge.png" alt="" class="hedge" draggable="false">
+    </div>
+  </div>
+
+  <!-- Home Screen -->
+  <div id="home-screen" class="screen" style="display: none;">
+    <img src="assets/fireworks.png" alt="" class="deco deco-fireworks" draggable="false">
+    <img src="assets/bunting.png" alt="" class="deco deco-bunting" draggable="false">
+
+    <div class="home-content">
+      <p class="home-greeting">hiiiiiiiiiiiiiiiiiiiiii</p>
+      <h1 class="home-title">HAPPY ANNIVERSARY NIDHI<br>I LOVE YOU.</h1>
+
+      <div class="home-body">
+        <p>okay so, since i can&rsquo;t give you<br>anything physical, you&rsquo;ve got this :)</p>
+        <p>now go through each section.<br>(physical copies of everything are waiting with me :)</p>
+      </div>
+
+      <div class="home-buttons">
+        <button class="nav-btn" data-section="read">read</button>
+        <button class="nav-btn" data-section="play">play</button>
+        <button class="nav-btn" data-section="watch">watch</button>
+      </div>
+    </div>
+
+    <div class="books-container"></div>
+  </div>
+
+  <!-- Read screen -->
+  <div id="read-screen" class="screen" style="display: none;">
+    <div class="read-header">
+      <button class="back-btn" id="read-back">&larr; back</button>
+    </div>
+
+    <div class="read-body" id="read-body">
+      <div class="read-image-area" id="read-image-area">
+        <img src="photos/read-3.jpg" class="read-img" id="read-img-1" draggable="false">
+        <img src="photos/read-2.jpg" class="read-img" id="read-img-2" draggable="false">
+        <img src="photos/read-1.jpg" class="read-img" id="read-img-3" draggable="false">
+      </div>
+
+      <p class="read-hint" id="read-hint">drag your finger on the flower from centre to left</p>
+
+      <div class="read-transcription" id="read-transcription">
+        <p class="read-date">on 4/10/2026, for 11/10/2026</p>
+        <p class="read-salutation">Dearest Nidhi &hearts;,</p>
+        <p>I love you. Happiest happiest Anniversary. Goodness me, I love you so so much. Look at us. Look at how far, how quickly, and still together we&rsquo;ve come. Why did I say still? Because my love, we&rsquo;ve both been so so strong and brave. We&rsquo;ve both held on, hurt, loved and found our way out. Like I said and I&rsquo;ll say till the end (and after): It&rsquo;s a privilege to be here with you. To again and again live the same 24 hours with you. To care for you. To love you.</p>
+        <p>Thank you for having me. Thank you for your patience. And thank you, Nidhi, for your love.</p>
+        <p>Happy Anniversary Nidhi.</p>
+        <p class="read-closing">I love you.</p>
+        <p class="read-closing read-signature">- Your Arth &hearts;</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Watch screen -->
+  <div id="watch-screen" class="screen" style="display: none;">
+    <div class="watch-header">
+      <button class="back-btn" id="watch-back">&larr; back</button>
+    </div>
+
+    <div class="watch-content">
+      <div class="watch-video-wrap">
+        <iframe id="watch-iframe" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+    </div>
+
+    <div class="books-container books-small"></div>
+  </div>
+
+  <!-- Play screen -->
+  <div id="play-screen" class="screen" style="display: none;">
+    <div class="play-header">
+      <button class="back-btn" id="play-back">&larr; back</button>
+      <span class="play-counter" id="play-counter">1 / 17</span>
+      <button class="back-btn" id="play-gallery-btn">gallery</button>
+    </div>
+
+    <div class="play-content">
+      <div class="play-image-wrap">
+        <img id="play-image" src="" alt="" class="play-image" draggable="false">
+      </div>
+
+      <p class="play-hint" id="play-hint"></p>
+
+      <div class="play-answer-area" id="play-answer-area">
+        <button class="nav-btn play-reveal-btn" id="play-reveal">reveal</button>
+        <p class="play-answer" id="play-answer"></p>
+      </div>
+    </div>
+
+    <div class="play-nav" id="play-nav-arrows">
+      <button class="nav-btn" id="play-prev">&larr;</button>
+      <button class="nav-btn" id="play-next">&rarr;</button>
+    </div>
+
+    <div class="play-nav" id="play-nav-end" style="display: none;">
+      <button class="nav-btn" id="play-view-gallery">view gallery</button>
+      <button class="nav-btn" id="play-restart">play again</button>
+    </div>
+
+    <div class="books-container books-small"></div>
+  </div>
+
+  <!-- Gallery screen -->
+  <div id="gallery-screen" class="screen" style="display: none;">
+    <div class="gallery-header">
+      <button class="back-btn" id="gallery-back">&larr; back</button>
+      <button class="nav-btn gallery-header-btn" id="gallery-play-again">play again</button>
+    </div>
+
+    <div class="gallery-scroll">
+      <div class="gallery-grid" id="gallery-grid"></div>
+    </div>
+
+    <div class="books-container books-small"></div>
+  </div>
+
+  <script src="js/app.js"></script>
+</body>
+</html>

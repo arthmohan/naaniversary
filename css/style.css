@@ -1,0 +1,809 @@
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  overflow: hidden;
+  overscroll-behavior: none;
+  background-color: #A7D5EA;
+  font-family: 'EB Garamond', serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.screen {
+  width: 100%;
+  height: 100vh;
+  height: 100dvh;
+  position: relative;
+  overflow: hidden;
+}
+
+
+/* ==============================
+   Lock Screen
+   ============================== */
+
+#lock-screen {
+  background-color: #A7D5EA;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.lock-content {
+  text-align: center;
+  padding-top: 20vh;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  position: relative;
+  z-index: 1;
+}
+
+.lock-heading {
+  font-size: clamp(1.2rem, 5vw, 2rem);
+  font-weight: 400;
+  color: #000;
+  letter-spacing: 0.02em;
+  line-height: 1.4;
+}
+
+.lock-subheading {
+  font-size: clamp(1.2rem, 5vw, 2rem);
+  font-weight: 400;
+  color: #000;
+  letter-spacing: 0.02em;
+  line-height: 1.4;
+  margin-top: 0.15em;
+}
+
+.countdown {
+  font-size: clamp(2.8rem, 11vw, 5rem);
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: 0.02em;
+  margin-top: 0.2em;
+  font-variant-numeric: tabular-nums;
+}
+
+.suggestion-area {
+  margin-top: 8vh;
+}
+
+.suggestion-label {
+  font-size: clamp(1.05rem, 3.8vw, 1.5rem);
+  font-weight: 400;
+  color: #000;
+  line-height: 1.4;
+}
+
+.suggestion-text {
+  font-size: clamp(1rem, 3.5vw, 1.35rem);
+  font-weight: 400;
+  color: #fff;
+  margin-top: 0.35em;
+  min-height: 1.5em;
+  opacity: 1;
+  transition: opacity 0.25s ease;
+}
+
+
+/* ==============================
+   Hedge (single cropped image)
+   ============================== */
+
+.hedge-container {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  pointer-events: none;
+  user-select: none;
+  -webkit-user-select: none;
+  z-index: 0;
+}
+
+.hedge {
+  width: 100%;
+  max-height: 20vh;
+  object-fit: cover;
+  object-position: top center;
+  display: block;
+}
+
+@media (min-width: 768px) {
+  .hedge {
+    max-height: 30vh;
+  }
+
+  .lock-content {
+    max-width: 600px;
+    padding-top: 12vh;
+  }
+}
+
+
+/* ==============================
+   Password Gate
+   ============================== */
+
+.password-box {
+  margin-top: 3em;
+}
+
+.password-input {
+  font-family: 'EB Garamond', serif;
+  font-size: clamp(1.05rem, 3.8vw, 1.3rem);
+  font-weight: 400;
+  color: #000;
+  background: #fff;
+  border: 1.5px solid #21617E;
+  padding: 0.55em 1.2em;
+  width: min(280px, 70vw);
+  text-align: center;
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.password-input::placeholder {
+  color: #999;
+}
+
+.password-input:focus {
+  border-color: #000;
+}
+
+.password-hint {
+  font-size: clamp(0.85rem, 3vw, 1rem);
+  font-weight: 400;
+  color: #fff;
+  margin-top: 0.8em;
+  font-style: italic;
+}
+
+.password-btn {
+  margin-top: 1.5em;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  20% { transform: translateX(-8px); }
+  40% { transform: translateX(8px); }
+  60% { transform: translateX(-6px); }
+  80% { transform: translateX(6px); }
+}
+
+.shake {
+  animation: shake 0.4s ease;
+}
+
+
+/* ==============================
+   Home Screen
+   ============================== */
+
+#home-screen {
+  background-color: #A7D5EA;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.home-content {
+  text-align: center;
+  padding: 0 2rem;
+  position: relative;
+  z-index: 1;
+}
+
+.home-greeting {
+  font-size: clamp(1rem, 3.5vw, 1.3rem);
+  font-weight: 400;
+  color: #000;
+  letter-spacing: 0.01em;
+}
+
+.home-title {
+  font-size: clamp(1.35rem, 5.5vw, 2.2rem);
+  font-weight: 400;
+  color: #000;
+  letter-spacing: 0.02em;
+  line-height: 1.35;
+  margin-top: 0.6em;
+}
+
+.home-body {
+  margin-top: 1.8em;
+}
+
+.home-body p {
+  font-size: clamp(0.95rem, 3.5vw, 1.2rem);
+  font-weight: 400;
+  color: #000;
+  line-height: 1.5;
+}
+
+.home-body p + p {
+  margin-top: 1em;
+}
+
+
+/* ==============================
+   Nav Buttons
+   ============================== */
+
+.home-buttons {
+  display: flex;
+  gap: 1.2rem;
+  justify-content: center;
+  margin-top: 2.2em;
+}
+
+.nav-btn {
+  font-family: 'EB Garamond', serif;
+  font-size: clamp(1.05rem, 3.8vw, 1.3rem);
+  font-weight: 400;
+  color: #000;
+  background: #fff;
+  border: 1.5px solid #21617E;
+  padding: 0.55em 2.2em;
+  cursor: pointer;
+  position: relative;
+  box-shadow: none;
+  transition: box-shadow 0.15s ease, background 0.15s ease;
+  -webkit-tap-highlight-color: transparent;
+  outline: none;
+}
+
+.nav-btn:hover {
+  box-shadow: 5px 5px 0 0 #21617E;
+}
+
+.nav-btn:active {
+  background: #e0e0e0;
+  box-shadow: 5px 5px 0 0 #21617E;
+}
+
+@media (hover: none) {
+  .nav-btn:hover {
+    box-shadow: none;
+  }
+  .nav-btn:active {
+    box-shadow: 5px 5px 0 #21617E;
+  }
+}
+
+
+/* ==============================
+   Back Button (text-style, used in play/gallery headers)
+   ============================== */
+
+.back-btn {
+  font-family: 'EB Garamond', serif;
+  font-size: clamp(0.95rem, 3.2vw, 1.1rem);
+  font-weight: 400;
+  color: #000;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.3em 0;
+  -webkit-tap-highlight-color: transparent;
+  transition: opacity 0.15s ease;
+}
+
+.back-btn:hover {
+  opacity: 0.6;
+}
+
+.back-btn:active {
+  opacity: 0.4;
+}
+
+
+/* ==============================
+   Decorative Illustrations
+   ============================== */
+
+.deco {
+  position: absolute;
+  pointer-events: none;
+  user-select: none;
+  -webkit-user-select: none;
+  z-index: 0;
+}
+
+/* Fireworks: top-left, partially out of frame */
+.deco-fireworks {
+  top: -3vh;
+  left: -5vw;
+  width: clamp(140px, 38vw, 200px);
+}
+
+/* Bunting: top-right, draping down */
+.deco-bunting {
+  top: -2vh;
+  right: -3vw;
+  width: clamp(160px, 42vw, 240px);
+}
+
+/* Books: bottom strip, like the hedge */
+.books-container {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 15vh;
+  background: url('../assets/books.png') no-repeat bottom center;
+  background-size: 100% auto;
+  pointer-events: none;
+  user-select: none;
+  -webkit-user-select: none;
+  z-index: 0;
+}
+
+/* Half-height books strip for play/gallery/read */
+.books-small {
+  height: 8vh;
+  background-size: 50% auto;
+  background-repeat: repeat-x;
+  background-position: bottom left;
+}
+
+@media (min-width: 768px) {
+  .home-content {
+    max-width: 560px;
+  }
+
+  .deco-fireworks {
+    width: 280px;
+    top: -3vh;
+    left: -4vw;
+  }
+
+  .deco-bunting {
+    width: 320px;
+    top: -2vh;
+    right: -2vw;
+  }
+
+  .books-container {
+    height: 18vh;
+    background-repeat: repeat-x;
+    background-size: auto 100%;
+    background-position: bottom left;
+  }
+
+  .books-small {
+    height: 9vh;
+    background-size: auto 100%;
+  }
+}
+
+
+/* ==============================
+   Play Screen
+   ============================== */
+
+#play-screen {
+  background-color: #A7D5EA;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 8vh;
+}
+
+.play-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.2rem 1.5rem 0;
+  flex-shrink: 0;
+}
+
+.play-counter {
+  font-family: 'EB Garamond', serif;
+  font-size: clamp(0.9rem, 3vw, 1.05rem);
+  color: #000;
+  font-weight: 400;
+}
+
+.play-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0 1.5rem;
+  min-height: 0;
+  gap: 0.6rem;
+}
+
+.play-image-wrap {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 0;
+  width: 100%;
+  max-height: 48dvh;
+  padding: 0.5rem 0;
+}
+
+.play-image {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  border-radius: 4px;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.play-hint {
+  font-family: 'EB Garamond', serif;
+  font-size: clamp(1rem, 3.5vw, 1.2rem);
+  font-weight: 400;
+  color: #000;
+  text-align: center;
+  font-style: italic;
+  line-height: 1.4;
+  flex-shrink: 0;
+  min-height: 2.8em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.play-answer-area {
+  text-align: center;
+  min-height: 3.5em;
+  flex-shrink: 0;
+}
+
+.play-reveal-btn {
+  padding: 0.45em 2em;
+}
+
+.play-answer {
+  font-family: 'EB Garamond', serif;
+  font-size: clamp(1.05rem, 3.8vw, 1.3rem);
+  font-weight: 400;
+  color: #fff;
+  text-align: center;
+  line-height: 1.4;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.play-answer.visible {
+  opacity: 1;
+}
+
+.play-nav {
+  display: flex;
+  justify-content: center;
+  gap: 1.2rem;
+  padding: 0 1.5rem 1rem;
+  flex-shrink: 0;
+  position: relative;
+  z-index: 1;
+}
+
+.play-nav .nav-btn {
+  padding: 0.45em 1.8em;
+  font-size: clamp(1rem, 3.5vw, 1.2rem);
+}
+
+@media (min-width: 768px) {
+  .play-content {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .play-image-wrap {
+    max-height: 52dvh;
+  }
+
+  #play-screen {
+    padding-bottom: 9vh;
+  }
+}
+
+
+/* ==============================
+   Gallery Screen
+   ============================== */
+
+#gallery-screen {
+  background-color: #A7D5EA;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 8vh;
+}
+
+.gallery-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.2rem 1.5rem 0.8rem;
+  flex-shrink: 0;
+}
+
+.gallery-header-btn {
+  font-size: clamp(0.85rem, 2.8vw, 1rem);
+  padding: 0.4em 1.4em;
+}
+
+.gallery-scroll {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+  padding: 0 1rem 1rem;
+}
+
+.gallery-grid {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+}
+
+.gallery-col {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.gallery-item {
+  width: 100%;
+  display: block;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: opacity 0.15s ease;
+}
+
+.gallery-item:hover {
+  opacity: 0.8;
+}
+
+.gallery-item:active {
+  opacity: 0.6;
+}
+
+@media (min-width: 768px) {
+  .gallery-grid {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  #gallery-screen {
+    padding-bottom: 9vh;
+  }
+}
+
+
+/* ==============================
+   Read Screen
+   ============================== */
+
+#read-screen {
+  background-color: #F5F0E8;
+  background-image:
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 28px,
+      rgba(0,0,0,0.018) 28px,
+      rgba(0,0,0,0.018) 29px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 28px,
+      rgba(0,0,0,0.012) 28px,
+      rgba(0,0,0,0.012) 29px
+    );
+  display: flex;
+  flex-direction: column;
+  overflow-y: hidden;
+}
+
+.read-header {
+  display: flex;
+  align-items: center;
+  padding: 1.2rem 1.5rem 0;
+  flex-shrink: 0;
+}
+
+.read-header .back-btn {
+  color: #5C4A3A;
+}
+
+.read-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem 1.5rem 2rem;
+  min-height: 0;
+}
+
+.read-image-area {
+  position: relative;
+  width: 100%;
+  max-width: 500px;
+  aspect-ratio: 16 / 9;
+  touch-action: none;
+  user-select: none;
+  -webkit-user-select: none;
+  filter: drop-shadow(0 4px 12px rgba(0,0,0,0.15));
+  cursor: grab;
+}
+
+.read-image-area:active {
+  cursor: grabbing;
+}
+
+.read-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  pointer-events: none;
+  transition: opacity 0.05s linear;
+}
+
+#read-img-1 { opacity: 1; }
+#read-img-2 { opacity: 0; }
+#read-img-3 { opacity: 0; }
+
+.read-hint {
+  font-family: 'EB Garamond', serif;
+  font-size: clamp(0.9rem, 3vw, 1.05rem);
+  font-weight: 400;
+  font-style: italic;
+  color: #8B7765;
+  text-align: center;
+  margin-top: 1.2rem;
+  flex-shrink: 0;
+  transition: opacity 0.4s ease;
+}
+
+.read-hint.hidden {
+  opacity: 0;
+}
+
+.read-transcription {
+  width: 100%;
+  max-width: 500px;
+  opacity: 0;
+  height: 0;
+  overflow: hidden;
+  transition: opacity 0.5s ease;
+  margin-top: 0;
+}
+
+.read-transcription.visible {
+  opacity: 1;
+  height: auto;
+  overflow: visible;
+  margin-top: 1.8rem;
+}
+
+.read-transcription p {
+  font-family: 'EB Garamond', serif;
+  font-size: clamp(0.95rem, 3.3vw, 1.15rem);
+  font-weight: 400;
+  color: #3D2F25;
+  text-align: center;
+  line-height: 1.6;
+}
+
+.read-transcription p + p {
+  margin-top: 0.8em;
+}
+
+.read-date {
+  font-style: italic;
+  color: #8B7765 !important;
+  font-size: clamp(0.85rem, 2.8vw, 1rem) !important;
+  margin-bottom: 0.3em;
+}
+
+.read-salutation {
+  font-size: clamp(1.05rem, 3.6vw, 1.25rem) !important;
+}
+
+.read-closing {
+  text-align: right;
+}
+
+.read-signature {
+  margin-top: 0.3em !important;
+}
+
+/* scrollable state when transcription is visible */
+#read-screen.read-scrollable {
+  overflow-y: auto;
+}
+
+#read-screen.read-scrollable .read-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background-color: #F5F0E8;
+  padding-bottom: 0.5rem;
+}
+
+#read-screen.read-scrollable .read-body {
+  flex: none;
+  justify-content: flex-start;
+  padding-bottom: 3rem;
+}
+
+@media (min-width: 768px) {
+  .read-body {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .read-image-area {
+    max-width: 560px;
+  }
+}
+
+
+/* ==============================
+   Watch Screen
+   ============================== */
+
+#watch-screen {
+  background-color: #A7D5EA;
+  display: flex;
+  flex-direction: column;
+}
+
+.watch-header {
+  display: flex;
+  align-items: center;
+  padding: 1.2rem 1.5rem 0;
+  flex-shrink: 0;
+}
+
+.watch-content {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem 1.5rem 2rem;
+  min-height: 0;
+}
+
+.watch-video-wrap {
+  position: relative;
+  width: 100%;
+  max-width: 640px;
+  aspect-ratio: 16 / 9;
+  background: #fff;
+  padding: 6px;
+  border-radius: 4px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+}
+
+.watch-video-wrap iframe {
+  position: absolute;
+  top: 6px;
+  left: 6px;
+  width: calc(100% - 12px);
+  height: calc(100% - 12px);
+  border: none;
+  border-radius: 2px;
+}
